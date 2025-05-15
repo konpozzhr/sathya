@@ -112,6 +112,48 @@
         });
     </script>
  
+    <script>
+        const titleText = "IT CMS Specialist";
+        const subtitleText = "I build exceptional digital experiences that make people's lives easier.";
+
+        let titleIndex = 0;
+        let subtitleIndex = 0;
+
+        function typeTitle() {
+            if (titleIndex < titleText.length) {
+            document.getElementById("typewriter-title").innerHTML += titleText.charAt(titleIndex);
+            titleIndex++;
+            setTimeout(typeTitle, 80); // typing speed
+            } else {
+            setTimeout(typeSubtitle, 500); // pause before subtitle starts
+            }
+        }
+
+        function typeSubtitle() {
+            if (subtitleIndex < subtitleText.length) {
+            document.getElementById("typewriter-subtitle").innerHTML += subtitleText.charAt(subtitleIndex);
+            subtitleIndex++;
+            setTimeout(typeSubtitle, 40);
+            }
+        }
+
+        // Start typing effect on page load
+        window.addEventListener("load", typeTitle);
+    </script>
+
+    <style>
+        #typewriter-title::after {
+            animation: blink 1s infinite;
+            color: white;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+    </style>
+
+
 
     <!-- Hero Section -->
     <section id="home" class="relative py-24 bg-gradient-to-r from-primary-500 to-green-600 text-white overflow-hiddenn rounded-xl">
@@ -125,10 +167,14 @@
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="md:w-1/2 mb-12 md:mb-0">
                     <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-down">Hi, I'm <span class="text-yellow-300 animate-pulse">Sathya</span></h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-green-100">
+                    <!-- <h2 class="text-2xl md:text-3xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-green-100">
                         IT CMS Specialist
                     </h2>
-                    <p class="text-lg mb-8 max-w-md">I build exceptional digital experiences that make people's lives easier.</p>
+                    <p class="text-lg mb-8 max-w-md">I build exceptional digital experiences that make people's lives easier.</p> -->
+
+                    <h2 id="typewriter-title" class="text-2xl md:text-3xl font-semibold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-green-100"></h2>
+                    <p id="typewriter-subtitle" class="text-lg mb-8 max-w-md"></p>
+
                     <div class="flex flex-wrap gap-4">
                         <a href="#contact" class="bg-white text-primary-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                             Contact Me
